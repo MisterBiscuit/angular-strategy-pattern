@@ -1,0 +1,9 @@
+<mat-tab-group (selectedIndexChange)="switchStrategy($event)">
+  <mat-tab *ngFor="let strategy of strategies" [label]="strategy.label"></mat-tab>
+</mat-tab-group>
+
+<ng-template strategyContainer></ng-template>
+
+<button mat-raised-button (click)="doSomething()">Do something</button>
+
+<p>{{ strategyValues | json }}</p>

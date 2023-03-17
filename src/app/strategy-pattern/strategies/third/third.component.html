@@ -1,0 +1,12 @@
+<p>Third</p>
+
+<form [formGroup]="formGroup">
+  <mat-form-field appearance="fill" [color]="formGroup.get('colour')?.value">
+    <mat-label>Colour</mat-label>
+    <mat-select formGroupName="colour">
+      <mat-option value="primary">Primary</mat-option>
+      <mat-option value="accent">Accent</mat-option>
+      <mat-option value="warn">Warn</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

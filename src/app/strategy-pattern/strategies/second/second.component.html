@@ -1,0 +1,24 @@
+<p>Second</p>
+
+<form [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-label>First name</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last name</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Favourite food</mat-label>
+    <mat-select formControlName="food">
+      <mat-option value="burrito">Burrito</mat-option>
+      <mat-option value="pizza">Pizza</mat-option>
+      <mat-option value="hamburger">Hamburger</mat-option>
+      <mat-option value="fnc">Fish 'n' chips</mat-option>
+      <mat-option value="snap">Steak 'n' ale pie</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

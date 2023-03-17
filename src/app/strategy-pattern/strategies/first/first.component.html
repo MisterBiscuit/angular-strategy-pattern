@@ -1,0 +1,10 @@
+<p>First</p>
+
+<form [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-label>Superhero</mat-label>
+    <mat-select formControlName="superhero">
+      <mat-option *ngFor="let hero of heroes" [value]="hero.value">{{ hero.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
