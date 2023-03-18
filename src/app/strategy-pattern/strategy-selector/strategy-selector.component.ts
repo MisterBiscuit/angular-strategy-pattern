@@ -34,9 +34,17 @@ export class StrategySelectorComponent implements OnInit {
   }
   
   private _switchStrategy(strategy: Strategy): void {
+    if (this.selectedStrategy) {
+      this.strategyContainer.viewContainerRef.detach();
+    }
+    
     this.strategyValues = undefined;
     this.selectedStrategy = strategy;
-    this.strategyContainer.viewContainerRef.clear();
-    strategy.componentRef = this.strategyContainer.viewContainerRef.createComponent(strategy.componentClass);
+
+    if (strategy.componentRef) {
+      this.strategyContainer.viewContainerRef.insert(strategy.componentRef.hostView);
+    } else {
+      strategy.componentRef = this.strategyContainer.viewContainerRef.createComponent(strategy.componentClass);
+    }
   }
 }
