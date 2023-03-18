@@ -2,4 +2,11 @@
   <span>Strategy pattern test</span>
 </mat-toolbar>
 
-<app-strategy-selector></app-strategy-selector>
+<app-strategy-selector (valueUpdated)="addStrategyData($event)"></app-strategy-selector>
+
+<p>Results</p>
+<ul>
+  <li *ngFor="let event of strategyData.slice().reverse()">
+    {{ event | json }}
+  </li>
+</ul>

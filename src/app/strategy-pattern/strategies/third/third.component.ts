@@ -10,9 +10,11 @@ import { AbstractStrategyComponent, ThirdType } from '../';
 })
 export class ThirdComponent extends AbstractStrategyComponent<ThirdType> implements OnInit {
 
+  public colourControl: FormControl = new FormControl('primary' as ThemePalette, Validators.required);
+
   public initFormGroup(): void {
     this.formGroup = this.formBuilder.group({
-      colour: new FormControl('primary' as ThemePalette, Validators.required),
+      colour: this.colourControl,
     });
   }
 }

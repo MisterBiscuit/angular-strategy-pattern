@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 import { FirstComponent, SecondComponent, StrategyResultType, ThirdComponent } from '../strategies';
 import { Strategy } from '../strategy';
@@ -12,6 +12,8 @@ export class StrategySelectorComponent implements OnInit {
 
   @ViewChild(StrategyContainerDirective, { static: true }) public strategyContainer!: StrategyContainerDirective;
 
+  @Output() valueUpdated: EventEmitter<StrategyResultType> = new EventEmitter<StrategyResultType>();
+
   public strategies: Strategy[] = [
     new Strategy('first', 'First', FirstComponent),
     new Strategy('second', 'Second', SecondComponent),
@@ -19,7 +21,6 @@ export class StrategySelectorComponent implements OnInit {
   ];
 
   public selectedStrategy!: Strategy;
-  public strategyValues: StrategyResultType | undefined;
 
   public ngOnInit(): void {
     this._switchStrategy(this.strategies[0]);
@@ -29,8 +30,8 @@ export class StrategySelectorComponent implements OnInit {
     this._switchStrategy(this.strategies[index]);
   }
 
-  public doSomething(): void {
-    this.strategyValues = this.selectedStrategy.getFormData();
+  public triggerValueEvent(): void {
+    this.valueUpdated.emit(this.selectedStrategy.getFormData());
   }
   
   private _switchStrategy(strategy: Strategy): void {
@@ -38,7 +39,7 @@ export class StrategySelectorComponent implements OnInit {
       this.strategyContainer.viewContainerRef.detach();
     }
     
-    this.strategyValues = undefined;
+    this.valueUpdated.emit(undefined);
     this.selectedStrategy = strategy;
 
     if (strategy.componentRef) {

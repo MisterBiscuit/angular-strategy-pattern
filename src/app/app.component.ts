@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { StrategyResultType } from './strategy-pattern/strategies';
+
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   public readonly title = 'Angular strategy pattern';
+  public strategyData: (StrategyResultType)[] = [];
 
+  public addStrategyData(data: StrategyResultType): void {
+    this.strategyData.push(data);
+  }
 }
