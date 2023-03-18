@@ -1,4 +1,4 @@
-<mat-tab-group (selectedIndexChange)="switchStrategy($event)">
+<mat-tab-group (selectedIndexChange)="setStrategy($event)">
   <mat-tab *ngFor="let strategy of strategies" [label]="strategy.label"></mat-tab>
 </mat-tab-group>
 

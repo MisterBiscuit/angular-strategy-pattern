@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+import { StrategyResultType } from '.';
+
 @Component({
   template: ''
 })
-export abstract class AbstractStrategyComponent implements OnInit {
+export abstract class AbstractStrategyComponent<T extends StrategyResultType> implements OnInit {
 
   public formGroup!: FormGroup;
 
@@ -17,7 +19,7 @@ export abstract class AbstractStrategyComponent implements OnInit {
     this.initFormGroup();
   }
 
-  public getFormData(): Record<string, any> | undefined {
+  public getFormData(): T | undefined {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
       return undefined;

@@ -1,18 +1,18 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { ComponentRef } from '@angular/core';
 
-import { AbstractStrategyComponent } from './abstract-strategy.component';
+import { AbstractStrategyComponent, StrategyResultType } from './strategies';
 
 export class Strategy {
   constructor(
     public name: string,
     public label: string,
-    public componentClass: ComponentType<AbstractStrategyComponent>,
-    public componentRef?: ComponentRef<AbstractStrategyComponent>
+    public componentClass: ComponentType<AbstractStrategyComponent<StrategyResultType>>,
+    public componentRef?: ComponentRef<AbstractStrategyComponent<StrategyResultType>>
   ) {
   }
 
-  public getFormData(): Record<string, any> | undefined {
+  public getFormData(): StrategyResultType {
     return this.componentRef?.instance?.getFormData();
   }
 }

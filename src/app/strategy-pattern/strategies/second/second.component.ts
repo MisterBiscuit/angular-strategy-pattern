@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AbstractStrategyComponent } from '../../abstract-strategy.component';
+
+import { AbstractStrategyComponent, SecondType } from '../';
 
 @Component({
   selector: 'app-second',
   templateUrl: './second.component.html'
 })
-export class SecondComponent extends AbstractStrategyComponent implements OnInit {
+export class SecondComponent extends AbstractStrategyComponent<SecondType> implements OnInit {
   public initFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       firstName: new FormControl(null, Validators.required),
