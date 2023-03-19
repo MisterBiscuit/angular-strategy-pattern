@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
-import { FirstComponent, SecondComponent, StrategyResultType, ThirdComponent } from '../strategies';
+import { FirstStrategyComponent, SecondStrategyComponent, StrategyResultType, ThirdStrategyComponent } from '../strategies';
 import { Strategy } from '../strategy';
 import { StrategyContainerDirective } from '../strategy-container.directive';
 
@@ -15,9 +15,9 @@ export class StrategySelectorComponent implements OnInit {
   @Output() valueUpdated: EventEmitter<StrategyResultType> = new EventEmitter<StrategyResultType>();
 
   public strategies: Strategy[] = [
-    new Strategy('first', 'First', FirstComponent),
-    new Strategy('second', 'Second', SecondComponent),
-    new Strategy('third', 'Third', ThirdComponent),
+    new Strategy('first', 'First', FirstStrategyComponent),
+    new Strategy('second', 'Second', SecondStrategyComponent),
+    new Strategy('third', 'Third', ThirdStrategyComponent),
   ];
 
   public selectedStrategy!: Strategy;

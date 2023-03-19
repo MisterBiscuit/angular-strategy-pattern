@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import { AbstractStrategyComponent, FirstType } from '../';
+import { AbstractStrategyComponent, FirstType } from '..';
 
 interface IHero {
   value: string;
@@ -9,10 +9,10 @@ interface IHero {
 }
 
 @Component({
-  selector: 'app-first',
-  templateUrl: './first.component.html'
+  selector: 'app-first-strategy',
+  templateUrl: './first-strategy.component.html'
 })
-export class FirstComponent extends AbstractStrategyComponent<FirstType> implements OnInit {
+export class FirstStrategyComponent extends AbstractStrategyComponent<FirstType> implements OnInit {
 
   public readonly heroes: IHero[] = [
     { name: 'Bruce Wayne', value: 'bwayne' },

@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialComponentsModule } from '../material-components.module';
 
-import { FirstComponent, SecondComponent, ThirdComponent } from './strategies';
+import { FirstStrategyComponent, SecondStrategyComponent, ThirdStrategyComponent } from './strategies';
 import { StrategyContainerDirective } from './strategy-container.directive';
 import { StrategySelectorComponent } from './strategy-selector/strategy-selector.component';
 
@@ -15,9 +15,9 @@ import { StrategySelectorComponent } from './strategy-selector/strategy-selector
     MaterialComponentsModule,
   ],
   declarations: [
-    FirstComponent,
-    SecondComponent,
-    ThirdComponent,
+    FirstStrategyComponent,
+    SecondStrategyComponent,
+    ThirdStrategyComponent,
     StrategySelectorComponent,
     StrategyContainerDirective,
   ],
