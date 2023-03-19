@@ -1,27 +1,32 @@
-# AngularStrategyPattern
+# Angular Strategy Pattern
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+Proof of concept of the strategy design pattern in Angular.
 
-## Development server
+I used the [Refactoring Guru website](https://refactoring.guru/design-patterns/strategy) as a guideline to implement this example (including the results from different web searches). \
+Note: I'm not affiliated or sponsored in any way, I just like the website and their explanations.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Main idea
 
-## Code scaffolding
+You have a main component that allows the user to choose a behaviour, a way of entering information, and a button that does something with the entered information, regardless of the chosen behaviour. \
+Instead of having the main component (`StrategySelectorComponent`) handle the logic of each case along with conditions in the component and in the template, it would be cleaner and more maintainable to split the different behaviours into `FirstStrategyComponent`, `SecondStrategyComponent`, and `ThirdStrategyComponent` classes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How this works
 
-## Build
+The `StrategySelectorComponent` functions as the Context, it knows which Concrete Strategy is active. \
+In this implementation it also contains a list of known strategies which are created on initialisation and used to provide the list of available strategies to the template.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Each Concrete Strategy contains it's own specific logic and doesn't know how the other Concrete Strategies work. \
+When the user selects a different strategy in the interface, the active Strategy is changed to the newly selected one.
 
-## Running unit tests
+When the user clicks the `Trigger value event` button, the active Strategy's `getFormData()` method is called and the result is emitted in the `valueUpdated()` EventEmitter, allowing whatever parent component to subscribe to the event and get the values entered by the user.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Behaviour specific to this implementation
 
-## Running end-to-end tests
+The template has a container into which the active Strategy's component will be injected. \
+When the Strategy is changed, the old Strategy's component is detached, not destroyed, which means that if the user enters information into the first Strategy, then moves to another Strategy, then back to the first Strategy, the previously entered information is still there.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The `Trigger value event` will only provide the data from the active Strategy, even if the user had entered information in one of the other Strategies.
 
-## Further help
+## Trying this out
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Very basic procedure here: clone the repository, install the dependencies, run `ng serve --open`.
